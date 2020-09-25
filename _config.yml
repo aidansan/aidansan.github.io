@@ -1,0 +1,3 @@
+collections:
+  blog_posts:
+    output: true

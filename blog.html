@@ -1,46 +1,15 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="spectre/spectre.min.css">
-        <link rel="stylesheet" href="spectre/spectre-exp.min.css">
-        <link rel="stylesheet" href="spectre/spectre-icons.min.css">
-        <link rel="stylesheet" href="spectre/custom-styles.css">
-    </head>
-
-    <body>
-    <div class="main-box">
-      <header class="navbar">
-        <section class="navbar-section">
-          <a href="index.html" class="navbar-brand mr-2">Aidan San</a>
-          <a href="https://drive.google.com/file/d/1ngiijG6VV_aL_vizcv0KuTGDHxznax_E/view?usp=sharing" class="btn btn-link">CV</a>
-          <a href="https://github.com/aidansan" class="btn btn-link">GitHub</a>
-          <a href="https://scholar.google.com/citations?hl=en&user=atZI-McAAAAJ" class="btn btn-link">Google Scholar</a>
-          <a href="blog.html" class="btn btn-link">Blog</a>
-        </section>
-      </header>
-      <h1>Blog</h1>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td><a href="blog/bayesian.html"><h4>Bayesian Learning</h4></a></td>
-          </tr>
-          <tr>
-            <td><a href="blog/mutual-information.html"><h4>Mutual Information</h4></a></td>
-          </tr>
-          <tr>
-            <td><a href="blog/entropy.html"><h4>Entropy</h4></a></td>
-          </tr>
-          <tr>
-            <td><a href="blog/pizza_stats.html"><h4>Statistical Distributions with Pizza</4></h3></td>
-          </tr>
-          <tr>
-            <td><a href="blog/elbo.html"><h4>ELBO</h4></a></td>
-          </tr>
-          <tr>
-            <td><a href="blog/pmi.html"><h4>PMI</h4></a></td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-    </div>
-</body>
-</html>
+---
+layout: default
+---
+<h1>Blog</h1>
+<table class="table">
+  <tbody>
+    {% for blog_post in site.blog_posts %}
+      {% unless blog_post.wip %}
+      <tr>
+        <td><a href="{{ blog_post.url }}"><h4>{{ blog_post.title }}</h4></a></td>
+      </tr>
+      {% endunless %}
+    {% endfor %}
+  </tbody>
+</table>

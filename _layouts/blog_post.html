@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<h1>Blog - {{ page.title }}</h1>
+<div class="container">{{ content }}</div>
+<p>
+  <h4>Citations</h4>
+  <ul>
+    {% for citation in page.citations %}
+      <li>{{ citation }}</li> 
+    {% endfor %}
+  </ul>
+</p>

@@ -1,0 +1,17 @@
+<html>
+  <head>
+    {% include style.html %}
+    {% if page.include_math %}
+      {% include math.html %}
+    {% endif %}
+  </head>
+
+  <body>
+    <div class="main-box">
+      {% include navigation.html %}
+        <div>
+          {{ content }}
+        </div>
+    </div>
+  </body>
+</html>
