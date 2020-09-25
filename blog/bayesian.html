@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../spectre/spectre.min.css">
+        <link rel="stylesheet" href="../spectre/spectre-exp.min.css">
+        <link rel="stylesheet" href="../spectre/spectre-icons.min.css">
+        <link rel="stylesheet" href="../spectre/custom-styles.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script>
+            MathJax = {
+              tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+              },
+              svg: {
+                fontCache: 'global'
+              }
+            };
+            </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+
+    <body>
+    <div class="main-box">
+      <header class="navbar">
+        <section class="navbar-section">
+          <a href="../index.html" class="navbar-brand mr-2">Aidan San</a>
+          <a href="https://drive.google.com/file/d/1ngiijG6VV_aL_vizcv0KuTGDHxznax_E/view?usp=sharing" class="btn btn-link">CV</a>
+          <a href="https://github.com/aidansan" class="btn btn-link">GitHub</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=atZI-McAAAAJ" class="btn btn-link">Google Scholar</a>
+          <a href="../blog.html" class="btn btn-link">Blog</a>
+        </section>
+      </header>
+      <h1>Blog - Bayesian Learning</h1>
+      <div>
+        $$P(\theta \vert D) = \frac{P(\theta, D)}{P(\theta)} = \frac{P(D\vert \theta)P(D)}{\sum_{\theta'}P(D\vert \theta =\theta')P(D)}$$
+
+        Prior: $P(\theta)$. <br>
+        Likelihood: $P(D \vert \theta)$ <br>
+        Posterior: $P(\theta \vert D)$. <br>
+        Marginal: $P(D\vert \theta =\theta')P(D)$ <br>
+        Joint Distribution: $P(\theta, D)$
+      </div>
+      <p>
+        <h4>Citations</h4>
+        <ul>
+        <li>Machine Learning a Probabilitistic Perspective: 2.2.2, 3.2
+        </li>
+        </ul>
+      </p>
+    </div>
+</body>
+</html>

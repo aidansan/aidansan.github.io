@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../spectre/spectre.min.css">
+        <link rel="stylesheet" href="../spectre/spectre-exp.min.css">
+        <link rel="stylesheet" href="../spectre/spectre-icons.min.css">
+        <link rel="stylesheet" href="../spectre/custom-styles.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+              fontCache: 'global'
+            }
+          };
+          </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+
+    <body>
+    <div class="main-box">
+      <header class="navbar">
+        <section class="navbar-section">
+          <a href="../index.html" class="navbar-brand mr-2">Aidan San</a>
+          <a href="https://drive.google.com/file/d/1ngiijG6VV_aL_vizcv0KuTGDHxznax_E/view?usp=sharing" class="btn btn-link">CV</a>
+          <a href="https://github.com/aidansan" class="btn btn-link">GitHub</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=atZI-McAAAAJ" class="btn btn-link">Google Scholar</a>
+          <a href="../blog.html" class="btn btn-link">Blog</a>
+        </section>
+      </header>
+      <h1>Blog - Entropy</h1>
+        <div>
+          <p>Entropy is generally thought of as disorder. The formula for entropy is given by: $H(X) = - \sum_{i=1}^{n}P(x_i)\log P(x_i)$. 
+            If we consider $X = \text{Bernoulli}(p)$, we can clearly see that entropy is highest when we cannot easily guess what value the random variable will take (when $p=.5$).
+            Entropy is lowest at 0 when we know the value that $X$ will always take ($p = 0$ or $p=.5$).
+          </p>
+          <iframe src="https://www.desmos.com/calculator/0f9brhjk3v?embed" width="500px" height="500px" style="border: 1px solid #ccc" frameborder=0></iframe>
+        </div>
+        <p>
+        <h4>Citations</h4>
+        <ul>
+        <li>https://en.wikipedia.org/wiki/Entropy_(information_theory)</li>
+        </ul>
+      </p>
+    </div>
+
+</body>
+</html>
