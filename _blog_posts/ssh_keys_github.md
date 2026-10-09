@@ -28,11 +28,11 @@ You can generate a new SSH key on your local machine. After you generate the key
    > Enter a file in which to save the key (/home/YOU/.ssh/id_ALGORITHM): ~/.ssh/id_ed25519_data120[Press enter]
    ```
 
-3. At the prompt for passphrase, press Enter. (For no passphrase)
+3. At the prompt for passphrase, press **Enter** twice to leave it empty (no passphrase).
 
    ```shell
-   > Enter passphrase (empty for no passphrase): [Type a passphrase]
-   > Enter same passphrase again: [Type passphrase again]
+   > Enter passphrase (empty for no passphrase): [Press enter]
+   > Enter same passphrase again: [Press enter]
    ```
 
 ## Adding a new SSH key to your account
@@ -41,7 +41,7 @@ You can generate a new SSH key on your local machine. After you generate the key
 
    ```shell
    $ cat ~/.ssh/id_ed25519_data120.pub
-   # Then select and copy the contents of the id_ed25519.pub file
+   # Then select and copy the contents of the id_ed25519_data120.pub file
    # displayed in the terminal to your clipboard
    ```
 
@@ -51,7 +51,11 @@ You can generate a new SSH key on your local machine. After you generate the key
 
 2. In the upper-right corner of any page on GitHub, click your profile picture, then click **Settings**.
 
+   ![GitHub profile dropdown menu with Settings option]({{ '/assets/images/github_settings_dropdown.png' | relative_url }})
+
 3. In the "Access" section of the sidebar, click **SSH and GPG keys**.
+
+   ![GitHub settings sidebar with SSH and GPG keys option]({{ '/assets/images/github_settings_keys.png' | relative_url }})
 
 4. Click **New SSH key** or **Add SSH key**.
 
@@ -63,4 +67,35 @@ You can generate a new SSH key on your local machine. After you generate the key
 
 8. Click **Add SSH key**.
 
-9. If prompted, confirm access to your account on GitHub. For more information, see [Sudo mode](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/sudo-mode).
+9. If prompted, confirm access to your account on GitHub.
+
+## Telling SSH to use your new key
+
+Because the key has a custom name, SSH won't find it automatically. You need to add it to your SSH config file so it's used whenever you connect to GitHub.
+
+1. In your terminal (or Git Bash on Windows), run the command below. It creates the config file if it doesn't exist yet and adds an entry for GitHub to the end of it.
+
+   ```shell
+   printf "\nHost github.com\n  IdentityFile ~/.ssh/id_ed25519_data120\n" >> ~/.ssh/config
+   ```
+
+2. Check that the entry was added.
+
+   ```shell
+   $ cat ~/.ssh/config
+   # You should see:
+   # Host github.com
+   #   IdentityFile ~/.ssh/id_ed25519_data120
+   ```
+
+3. Test your connection to GitHub.
+
+   ```shell
+   ssh -T git@github.com
+   ```
+
+   The first time you connect, you may see a message asking if you want to continue connecting. Type `yes` and press **Enter**. If everything is set up correctly, you'll see a message like this:
+
+   ```shell
+   > Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+   ```
