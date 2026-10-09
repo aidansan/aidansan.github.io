@@ -99,3 +99,9 @@ Because the key has a custom name, SSH won't find it automatically. You need to 
    ```shell
    > Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
    ```
+
+## Important Note: When cloning repositories
+Ignore the previous note to use HTTPS when cloning, you should instead use SSH.
+Make sure to select the SSH tab after clicking the code button.
+
+![GitHub cloning image]({{ '/assets/images/github_clone.png' | relative_url }})
