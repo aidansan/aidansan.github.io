@@ -21,15 +21,15 @@ At every layer of the model the representation is built from one single Query an
 $$\text{softmax}\left(\frac{q_{\text{bos}} \cdot k_{\text{bos}}}{\sqrt{64}}\right) v_{\text{bos}} = 1 \cdot v_{\text{bos}} = v_{\text{bos}}$$
 
 **Second decoding step:** The model is now conditioned on `<bos>` and "I" <br>
-Due to the causal mask, BOS is still only composed from the single query and key, and value representing `<bos>`, but now "I" representation is based on
+Due to the causal mask, the BOS representation is still only composed from the single query and key, and value representing `<bos>`, but now the "I" representation is based on
 
 $$(q_{\text{I}} \cdot k_{\text{bos}})\, v_{\text{bos}} + (q_{\text{I}} \cdot k_{\text{I}})\, v_{\text{I}}$$
 
 (note we are ignoring the softmax & scaling here)
 
 **Third decoding step:** The model is now conditioned on `<bos>`, "I" and "like" <br>
-BOS is based on the single query and key, and value (not affected by I or like's rep) <br>
-I is based only on I and `<bos>`, but now "like" representation is based on
+The BOS representation is based on the single query and key, and value (not affected by I or like's rep) <br>
+The I representation is based only on I and `<bos>` representations, but now the "like" representation is
 
 $$(q_{\text{like}} \cdot k_{\text{bos}})\, v_{\text{bos}} + (q_{\text{like}} \cdot k_{\text{I}})\, v_{\text{I}} + (q_{\text{like}} \cdot k_{\text{like}})\, v_{\text{like}}$$
 
@@ -41,6 +41,6 @@ The query vector is only needed to compute the representation for a particular t
 
 **When a new input token is added why don't the input vectors change?**
 
-Because of the causal mask. In attention, each token representation is only based on the previous tokens and itself. All other parts of the transformer operate on each token representation independently.
+Because of the causal mask. In attention, each token representation is only based on the previous tokens and itself. All other parts of the transformer (e.g. feedforwards, skip connections) operate on each token representation independently.
 
 (Typeset with Claude)
