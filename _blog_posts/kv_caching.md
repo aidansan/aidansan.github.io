@@ -6,7 +6,7 @@ citations: ["Attention Is All You Need: 3.2.3", "Hugging Face Blog, KV Caching: 
 ---
 **Standard Attention Process**
 
-1. You start with previous layer outputs: $X$
+1. You start with the previous layer outputs: $X$
 2. You down-project / matrix multiply by weight matrices, $W^Q, W^K, W^V \in \mathbb{R}^{512 \times 64}$ (8 heads).
 3. You compute attention $= \text{softmax}\left(\frac{QK^T}{\sqrt{64}}\right)V$
     1. Additionally a mask is applied - "We implement this inside of scaled dot-product attention by masking out (setting to $-\infty$) all values in the input of the softmax which correspond to illegal connections."
@@ -15,19 +15,19 @@ Let's say we're generating a string with 4 tokens
 
 `<bos> I like pizza`
 
-In the first decoding step, we condition the model on `<bos>` <br>
+**First decoding step:** We condition the model on `<bos>` <br>
 At every layer of the model the representation is built from one single Query and Key and Value (representing `<bos>` itself)
 
 $$\text{softmax}\left(\frac{q_{\text{bos}} \cdot k_{\text{bos}}}{\sqrt{64}}\right) v_{\text{bos}} = 1 \cdot v_{\text{bos}} = v_{\text{bos}}$$
 
-At the second step, the model is now conditioned on `<bos>` and "I" <br>
+**Second decoding step:** The model is now conditioned on `<bos>` and "I" <br>
 Due to the causal mask, BOS is still only composed from the single query and key, and value representing `<bos>`, but now "I" representation is based on
 
 $$(q_{\text{I}} \cdot k_{\text{bos}})\, v_{\text{bos}} + (q_{\text{I}} \cdot k_{\text{I}})\, v_{\text{I}}$$
 
 (note we are ignoring the softmax & scaling here)
 
-In the third step, the model is now conditioned on `<bos>`, "I" and "like" <br>
+**Third decoding step:** The model is now conditioned on `<bos>`, "I" and "like" <br>
 BOS is based on the single query and key, and value (not affected by I or like's rep) <br>
 I is based only on I and `<bos>`, but now "like" representation is based on
 
